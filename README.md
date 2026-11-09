@@ -1,42 +1,47 @@
 # Tehnosen – E-trgovina (prodavnica)
 
-Platforma za e-trgovinu na srpskom jeziku, namenjena pregledu proizvoda i simulaciji procesa kupovine. Projekat kombinuje „responzivni” (prilagodljivi) korisnički interfejs sa lokalnim Node.js „mock” API-jem (simuliranim interfejsom za razmenu podataka).
+Frontend demo prodavnice na srpskom jeziku, namenjen pregledanju proizvoda i simulaciji kupovine. Projekat koristi lokalni Node.js mock API; nije povezan sa stvarnim sistemom za plaćanje ili produkcionom bazom podataka.
 
 ## Funkcionalnosti
 
-- Katalog proizvoda sa detaljnim opisima i recenzijama
-- Korpa za kupovinu sa opcijom podešavanja količine proizvoda
-- Registracija i prijavljivanje korisnika
-- Formular za završetak kupovine (checkout) sa izborom načina isporuke i plaćanja
-- Validacija promotivnih kodova
-- Kontakt obrazac
-- Lokalni „mock” API za upravljanje podacima o proizvodima, korisničkim nalozima, porudžbinama, recenzijama i kontakt porukama
+- Katalog proizvoda sa opisima, detaljima i recenzijama
+- Pretraga, filtriranje i sortiranje proizvoda
+- Korpa za kupovinu sa podešavanjem količine
+- Registracija i prijavljivanje preko lokalnog mock API-ja
+- Checkout forma sa validacijom podataka i simulacijom slanja porudžbine
+- Validacija demo promotivnih kodova
+- Kontakt forma
 
 ## Tehnološki stek
 
 - HTML, CSS i JavaScript
-- React – za interfejs korpe za kupovinu
-- Node.js – za lokalni „mock” API i razvojni server
-- JSON datoteke – za čuvanje podataka o proizvodima i simulaciju baze podataka (perzistenciju podataka)
+- React za prikaz korpe
+- Node.js za lokalni razvojni server i mock API
+- JSON fajlovi za demo podatke o proizvodima i lokalno stanje mock API-ja
 
-## Pokretanje na lokalnom računaru
+## Pokretanje lokalno
 
-Zahtev: Node.js
-
-Iz direktorijuma projekta pokrenite komandu:
+Potrebni su Node.js i npm. Iz korena repozitorijuma pokreni:
 
 ```bash
 npm run dev
+```
 
-Ovo pokreće veb-sajt i simulirani API (mock API). Otvorite http://localhost:8093 u svom veb-pregledaču.
+Ova komanda pokreće frontend server i mock API. Otvori prodavnicu na `http://localhost:8093`. Mock API sluša na `http://localhost:3001`.
 
-Simulirani API radi na portu 3001. Ako je neki od ovih portova već zauzet, prekinite proces koji ga koristi pre pokretanja projekta.
+Za zaustavljanje oba servera pritisni `Ctrl+C` u terminalu u kom je pokrenut `npm run dev`.
+
+Ako je neki od portova zauzet, zaustavi prethodni proces iz njegovog terminala (najčešće `Ctrl+C`), pa ponovo pokreni komandu. Nemoj istovremeno pokretati dodatne instance istih servera na istim portovima.
+
+## Napomena o demo verziji
+
+Checkout samo demonstrira korisnički tok i šalje demo porudžbinu lokalnom mock API-ju. Ne unosi stvarne lične ili platne podatke; projekat ne obrađuje stvarna plaćanja i nije namenjen produkcionoj upotrebi.
 
 ## Struktura projekta
 
-index.html — početna tačka veb-sajta
-css/ — stilovi za izgled prodavnice
-js/ — logika aplikacije, korpe za kupovinu, prijavljivanja i stranice proizvoda
-src/api/apiClient.js — API klijent na strani klijenta (frontend)
-api_response.json — podaci o katalogu proizvoda
-postman/mocks/mock.js — lokalni server za simulirani API
+- `index.html` — početna tačka sajta
+- `css/` — stilovi
+- `js/` — navigacija i logika korisničkog interfejsa
+- `src/api/apiClient.js` — klijent za lokalni mock API
+- `api_response.json` — demo katalog proizvoda
+- `postman/mocks/mock.js` — lokalni mock API
